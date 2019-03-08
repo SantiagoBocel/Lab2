@@ -1,0 +1,6 @@
+D:\Estructurass\Library\bin\Debug\Library.dll
+D:\Estructurass\Library\bin\Debug\Library.pdb
+D:\Estructurass\Library\obj\Debug\Biblioteca.csprojAssemblyReference.cache
+D:\Estructurass\Library\obj\Debug\Biblioteca.csproj.CoreCompileInputs.cache
+D:\Estructurass\Library\obj\Debug\Library.dll
+D:\Estructurass\Library\obj\Debug\Library.pdb
