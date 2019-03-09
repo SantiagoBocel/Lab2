@@ -8,8 +8,11 @@ namespace Library
 {
     interface Interfaz<T>
     {
-        void Agregar(Nodo<T> raiz, T dato);
+        void Agregar(string dato);
+         Nodo<T> AgregarNodo(Nodo<T> raiz, Nodo<T> dato);
         void Buscar(T nodo);
-       void Auxiliar();
+        void inOrden();
+        void PreOrden();
+        void PosTOrden();
     }
 }

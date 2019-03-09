@@ -3,6 +3,7 @@ using Library;
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace Lab2.Singleton
 {
     public class Data
@@ -71,6 +72,7 @@ namespace Lab2.Singleton
                         objeto.Precio = datos[4];
                         objeto.Exis = int.Parse(datos[5]);
                         Lista.Add(objeto);
+                    Arbol.Agregar(objeto.Nombre);
                 }
                 Instance.flag = false;
                 objReader.Close();

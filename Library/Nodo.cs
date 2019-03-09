@@ -8,11 +8,11 @@ namespace Library
 {
     public class Nodo <T>
     {
-        public T dato { get; set; }
+        public string dato { get; set; }
         public Nodo<T> hijoDer { get; set; }
         public Nodo<T> hijoIzq { get; set; }
 
-        public Nodo(T DATO)
+        public Nodo(string DATO)
         {
             dato = DATO;
             hijoDer = null;

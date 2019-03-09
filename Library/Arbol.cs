@@ -8,39 +8,95 @@ namespace Library
 {
     public class Arbol<T> : Interfaz<T> where T: IComparable
     {
-        static Nodo<T> rArbol;
+        static Nodo<T> raiz;
        
-        public void Agregar(Nodo<T> raiz, T dato)
+        public Arbol() // contructor
         {
-            if (rArbol == null)
+            raiz=null;
+        }
+
+        public void Agregar(string identificador)
+        {
+
+            var nuevo = new Nodo<T>(identificador);
+
+            if (raiz == null)
             {
-                var nuevo = new Nodo<T>(dato);
-                rArbol = nuevo;
+                
+                raiz = nuevo;
             }
             else
             {
-                var nuevo = new Nodo<T>(dato);
-                bool validar = nuevo.dato.CompareTo(rArbol.dato) > 0;//devuelve 
+                AgregarNodo(raiz, nuevo);
+            }
+        }
 
-                if (validar == false)
+        public Nodo<T> AgregarNodo(Nodo<T> actual, Nodo<T> nuevo)
+        {
+            if (nuevo.dato.CompareTo(actual.dato) < 0)
+            {
+                if (actual.hijoIzq == null)
                 {
-                    Agregar(raiz.hijoIzq, dato);
+                    actual.hijoIzq = nuevo;
+                    return actual;
                 }
                 else
                 {
-                    Agregar(raiz.hijoIzq, dato);
-
+                    actual.hijoIzq = AgregarNodo(actual.hijoIzq,nuevo);
+                    return actual;
                 }
             }
-        }
-        public void Auxiliar()
-        {
-            throw new NotImplementedException();
+            else if (nuevo.dato.CompareTo(actual.dato) > 0)
+            {
+                if (actual.hijoDer == null)
+                {
+                    actual.hijoDer = nuevo;
+                    return actual;
+                }
+                else
+                {
+                    actual.hijoDer = AgregarNodo(actual.hijoDer, nuevo);
+                    return actual;
+                }
+            } else
+            {
+                return null;
+            }
         }
 
         public void Buscar(T nodo)
         {
             throw new NotImplementedException();
+        }
+
+        public void inOrden()
+        {
+            if (raiz != null)
+            {
+                PreOrden(raiz.hijoIzq);
+                // mostrar dato
+                PreOrden(raiz.hijoDer);
+            }
+        }
+
+        public void PosTOrden()
+        {
+            if (raiz != null)
+            {
+                PreOrden(raiz.hijoIzq);
+                PreOrden(raiz.hijoDer);
+                // mostrar dato
+            }
+        }
+
+        public void PreOrden(Nodo<T> raiz)
+        {
+            if (raiz != null)
+            {
+                // mostrar dato
+                PreOrden(raiz.hijoIzq);
+                PreOrden(raiz.hijoDer);
+            }
         }
     }
 }
