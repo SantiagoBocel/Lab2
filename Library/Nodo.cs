@@ -9,8 +9,10 @@ namespace Library
     public class Nodo <T>
     {
         public string dato { get; set; }
-        public Nodo<T> hijoDer { get; set; }
-        public Nodo<T> hijoIzq { get; set; }
+        public Nodo<T> hijoDer;
+        public Nodo<T> hijoIzq;
+        public int FactorBalance;
+        public Nodo<T> Padre { get; internal set; }
 
         public Nodo(string DATO)
         {

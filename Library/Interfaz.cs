@@ -9,10 +9,10 @@ namespace Library
     interface Interfaz<T>
     {
         void Agregar(string dato);
-         Nodo<T> AgregarNodo(Nodo<T> raiz, Nodo<T> dato);
+        Nodo<T> AgregarNodo(Nodo<T> actual, Nodo<T> nuevo);
         void Buscar(T nodo);
         void inOrden();
-        void PreOrden();
+        void PreOrden(Nodo<T> raiz);
         void PosTOrden();
     }
 }

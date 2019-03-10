@@ -19,11 +19,11 @@ namespace Lab2.Singleton
         }
         public Library.Arbol<int> Arbol = new Library.Arbol<int>();
         public List<Farmaco> Lista = new List<Farmaco>();
-        public bool flag= true;
+        public bool flag=true;
 
         public void CustomSplit()
         {
-            if (Instance.flag == true)
+            if (Instance.flag)
             {
                 StreamReader objReader = new StreamReader("D:\\Estructurass\\Lab2\\Lab2\\obj\\Debug\\Datos.txt");
                 string leerlineas = objReader.ReadLine();
