@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Arbol<T> : Interfaz<T> where T: IComparable
+    public class Arbol<T> : Interfaz<T> where T : IComparable
     {
-        static Nodo<T> raiz;
-       
+        public Nodo<T> raiz;
+
         public Arbol() // contructor
         {
-            raiz=null;
+            raiz = null;
         }
 
         public void Agregar(string identificador)
@@ -22,57 +23,101 @@ namespace Library
 
             if (raiz == null)
             {
-                
+
                 raiz = nuevo;
             }
             else
             {
-                AgregarNodo(raiz, nuevo);
+                eAgregar(raiz, nuevo);
             }
         }
-        public Nodo<T> AgregarNodo(Nodo<T> actual, Nodo<T> nuevo)
+        public string Buscar(string nREcibido)
+        {
+            if (nREcibido == raiz.Nombre)
+            {
+                string lel = raiz.Nombre;
+                return lel;
+            }
+            else
+            {
+                return eBuscar(raiz, nREcibido);
+            }
+        }
+        public Nodo<T> eAgregar(Nodo<T> actual, Nodo<T> nuevo)
         {
             Nodo<T> siguiente = raiz;
-            if (nuevo.dato.CompareTo(actual.dato) < 0)// delegdo  :3
+            if (nuevo.Nombre.CompareTo(actual.Nombre) < 0)// delegdo  :3
             {
                 if (actual.hijoIzq == null)
                 {
-                    siguiente.hijoIzq = new Nodo<T>(nuevo.dato);
+                    siguiente.hijoIzq = new Nodo<T>(nuevo.Nombre);
                     siguiente.hijoIzq.Padre = siguiente;
                     Equilibrar(siguiente, true, true); //Es izquierdo = true, es nuevo true;
                     return actual;
                 }
                 else
                 {
-                    actual.hijoIzq = AgregarNodo(actual.hijoIzq,nuevo);
+                    actual.hijoIzq = eAgregar(actual.hijoIzq, nuevo);
                     return actual;
                 }
             }
-            else if (nuevo.dato.CompareTo(actual.dato) > 0)
+            else if (nuevo.Nombre.CompareTo(actual.Nombre) > 0)
             {
                 if (actual.hijoDer == null)
                 {
-                    siguiente.hijoDer= new Nodo<T>(nuevo.dato);
+                    siguiente.hijoDer = new Nodo<T>(nuevo.Nombre);
                     siguiente.hijoDer.Padre = siguiente;
                     Equilibrar(siguiente, false, true); //es Izquierdo = false, es nuevo = true;
                     return actual;
                 }
                 else
                 {
-                    actual.hijoDer = AgregarNodo(actual.hijoDer, nuevo);
+                    actual.hijoDer = eAgregar(actual.hijoDer, nuevo);
                     return actual;
                 }
-            } else
+            }
+            else
             {
                 return null;
             }
         }
-
+        public string eBuscar(Nodo<T> actual, string recibido)
+        {
+            Nodo<T> siguiente = raiz;
+            if (recibido.CompareTo(actual.Nombre) < 0)// delegdo  :3
+            {
+                if (actual.hijoIzq.Nombre == recibido)
+                {
+                    string lel = recibido;
+                    return lel;
+                }
+                else
+                {
+                    return eBuscar(actual.hijoIzq, recibido);
+                }
+            }
+            else if (recibido.CompareTo(actual.Nombre) > 0)
+            {
+                if (actual.hijoDer.Nombre == recibido)
+                {
+                    string lel = recibido;
+                    return lel;
+                }
+                else
+                {
+                    return eBuscar(actual.hijoDer, recibido);
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
         internal void Equilibrar(Nodo<T> nodo, bool esIzquierdo, bool esNuevo)
         {
             bool bandera = false; //al terminar de recorrer una rama si no es necesario rotar entonces se convierte en verdadero.
-            // Recorrer camino inverso actualizando valores de FE:
-           
+                                  // Recorrer camino inverso actualizando valores de FE:
+
             while ((nodo != null) && !bandera)
             {
                 bool hizoRotacion = false; //Al inicio digo que no se rotó
@@ -146,7 +191,6 @@ namespace Library
                 nodo = nodo.Padre; // Calcular Factor de balance, siguiente nodo del camino ossea el padre.
             }
         }
-
         private void RSI(Nodo<T> nodo)
         {
             //Punteros necesarios para realizar la rotación.
@@ -192,7 +236,6 @@ namespace Library
                 Q.FactorBalance = 0;
             }
         }
-
         private void RDI(Nodo<T> nodo)
         {
             //Punteros necesarios para realizar la rotación
@@ -259,7 +302,6 @@ namespace Library
             }
             R.FactorBalance = 0;
         }
-
         private void RSD(Nodo<T> nodo)
         {
             //Punteros necesarios para realizar la rotación.
@@ -308,7 +350,6 @@ namespace Library
             }
 
         }
-
         private void RDD(Nodo<T> nodo)
         {
             //Punteros necesarios para realizar la rotación
@@ -375,11 +416,6 @@ namespace Library
             }
             R.FactorBalance = 0;
         }
-
-        public void Buscar(T nodo)
-        {
-            throw new NotImplementedException();
-        }
         public void inOrden()
         {
             if (raiz != null)
@@ -407,10 +443,6 @@ namespace Library
                 PreOrden(raiz.hijoDer);
             }
         }
-
-
-
-
-
+      
     }
 }

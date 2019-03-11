@@ -8,7 +8,7 @@ namespace Library
 {
     public class Nodo <T>
     {
-        public string dato { get; set; }
+        public string Nombre { get; set; }
         public Nodo<T> hijoDer;
         public Nodo<T> hijoIzq;
         public int FactorBalance;
@@ -16,7 +16,7 @@ namespace Library
 
         public Nodo(string DATO)
         {
-            dato = DATO;
+            Nombre = DATO;
             hijoDer = null;
             hijoIzq = null;
         }

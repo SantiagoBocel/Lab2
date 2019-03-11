@@ -20,8 +20,9 @@ namespace Lab2.Controllers
         }
 
         // GET: Farmacia/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string nombre)
         {
+            string elementos =  Data.Instance.Arbol.Buscar(nombre);
             return View();
         }
 
