@@ -98,6 +98,7 @@ namespace Lab2.Singleton
             if (Lista[pos].Nombre == nombre)
             {
                Elemento.Nombre= Lista[pos].Nombre;
+                Lista[pos].Exis--;
                Elemento.Id = Lista[pos].Id;
                 string aux = Lista[pos].Precio.Remove(0,1);
                 Elemento.Precio = double.Parse(aux);
@@ -113,6 +114,8 @@ namespace Lab2.Singleton
             if (Lista[pos].Nombre == nombre)
             {
                 lVentas.RemoveAt(pos);
+                Lista[pos].Exis++;
+
                 return;
             }
             pos++;
