@@ -20,10 +20,10 @@ namespace Lab2.Controllers
         }
 
         // GET: Farmacia/Details/5
-        public ActionResult Details(string nombre)
+        public ActionResult Avanzada(string nombre)
         {
-            string elementos =  Data.Instance.Arbol.Buscar(nombre);
-            return View();
+           
+            return View(Data.Instance.Buscar(0,nombre));
         }
 
         // GET: Farmacia/Create
@@ -71,14 +71,14 @@ namespace Lab2.Controllers
         }
 
         // GET: Farmacia/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Basica(string nombre)
         {
-            return View();
+            return View(Data.Instance.Buscar(0, nombre));
         }
 
         // POST: Farmacia/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Basica(int id, FormCollection collection)
         {
             try
             {

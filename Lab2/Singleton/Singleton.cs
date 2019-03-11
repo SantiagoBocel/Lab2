@@ -77,7 +77,19 @@ namespace Lab2.Singleton
                 objReader.Close();
             }
         }
-
+        public Farmaco Buscar(int pos,string nombre)
+        {
+            Farmaco resultado = new Farmaco();
+            string encuentra = Arbol.Buscar(nombre);
+            if (Lista[pos].Nombre==encuentra)
+            {
+                resultado = Lista[pos];
+                return resultado;
+            }
+                pos++;
+             encuentra = Arbol.Buscar(nombre);
+            return Buscar(pos, nombre);
+        }
        
 
     }

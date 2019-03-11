@@ -172,7 +172,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Farmaco\Index.cshtml" />
-    <Content Include="Views\Farmaco\Details.cshtml" />
+    <Content Include="Views\Farmaco\Avanzada.cshtml" />
+    <Content Include="Views\Farmaco\Basica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
