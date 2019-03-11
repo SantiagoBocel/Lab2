@@ -17,8 +17,10 @@ namespace Lab2.Singleton
                 return _instance;
             }
         }
+       
         public Library.Arbol<int> Arbol = new Library.Arbol<int>();
         public List<Farmaco> Lista = new List<Farmaco>();
+        public List<cVenta> lVentas = new List<cVenta>();
         public bool flag=true;
         public void CustomSplit()
         {
@@ -64,7 +66,7 @@ namespace Lab2.Singleton
                         n++;
                     }
                     leerlineas = objReader.ReadLine(); //Instance.Arbol.Agregar(raiz, objeto.id);
-                        objeto.id = int.Parse(datos[0]);
+                        objeto.Id = int.Parse(datos[0]);
                         objeto.Nombre = datos[1];
                         objeto.Descrip = datos[2];
                         objeto.Casa = datos[3];
@@ -90,7 +92,32 @@ namespace Lab2.Singleton
              encuentra = Arbol.Buscar(nombre);
             return Buscar(pos, nombre);
         }
-       
+        public void Venta(int pos, string nombre)
+        {
+            cVenta Elemento = new cVenta();
+            if (Lista[pos].Nombre == nombre)
+            {
+               Elemento.Nombre= Lista[pos].Nombre;
+               Elemento.Id = Lista[pos].Id;
+                string aux = Lista[pos].Precio.Remove(0,1);
+                Elemento.Precio = double.Parse(aux);
+                lVentas.Add(Elemento);
+                return ;
+            }
+            pos++;
+            Venta(pos, nombre);
+        }
+        public void Quitar(int pos, string nombre)
+        {
+            cVenta Elemento = new cVenta();
+            if (Lista[pos].Nombre == nombre)
+            {
+                lVentas.RemoveAt(pos);
+                return;
+            }
+            pos++;
+            Quitar(pos, nombre);
+        }
 
     }
 }

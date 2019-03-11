@@ -1,24 +1,22 @@
-﻿@model IEnumerable<Lab2.Models.Farmaco>
+﻿@model IEnumerable<Lab2.Models.cVenta>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Carrito";
 }
 
-<h2>Farmacia</h2>
+<h2>Carrito</h2>
 
 <p>
-    @Html.ActionLink("Carrito", "Carrito")
+    @Html.ActionLink("Regresar A Vista", "Index")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
-        
         <th>
             @Html.DisplayNameFor(model => model.Precio)
         </th>
-      
         <th></th>
     </tr>
 
@@ -31,10 +29,7 @@
             @Html.DisplayFor(modelItem => item.Precio)
         </td>
         <td>
-            @Html.ActionLink("Info Avanzada", "Avanzada", new { nombre = item.Nombre }) |
-            @Html.ActionLink("Info Basica", "Basica", new { nombre = item.Nombre })|
-            @Html.ActionLink("Agregar A Carrito", "Ventas", new { nombre = item.Nombre })
-            
+            @Html.ActionLink("Quitar", "Quitar", new { nombre=item.Nombre }) |
         </td>
     </tr>
 }

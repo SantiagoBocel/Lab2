@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Lab2.Models.Farmaco>
+
+@{
+    ViewBag.Title = "Ventas";
+}
+
+<h2>Farmacia</h2>
+
+<p>
+    @Html.ActionLink("Carrito", "Carrito")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.ActionLink("Info Avanzada", "Avanzada", new { nombre = item.Nombre }) |
+                @Html.ActionLink("Info Basica", "Basica", new { nombre = item.Nombre })|
+                @Html.ActionLink("Agregar A Carrito", "Ventas", new { nombre = item.Nombre })
+
+            </td>
+        </tr>
+    }
+
+</table>

@@ -11,7 +11,7 @@ namespace Lab2.Controllers
 {
     public class FarmacoController : Controller
     {
-        // GET: Farmacia
+        
         public ActionResult Index()
         {
             Data.Instance.CustomSplit();
@@ -19,34 +19,26 @@ namespace Lab2.Controllers
             return View(Data.Instance.Lista);
         }
 
-        // GET: Farmacia/Details/5
         public ActionResult Avanzada(string nombre)
         {
            
             return View(Data.Instance.Buscar(0,nombre));
         }
-
-        // GET: Farmacia/Create
-        public ActionResult Create()
+        public ActionResult Ventas(string nombre)
         {
-            return View();
+            Data.Instance.Venta(0,nombre);
+            return View(Data.Instance.Lista);
         }
 
-        // POST: Farmacia/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Quitar(string nombre)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Data.Instance.Quitar(0, nombre);
+            return View(Data.Instance.lVentas);
         }
+        public ActionResult Carrito()
+            {
+                return View(Data.Instance.lVentas);
+            }
 
         // GET: Farmacia/Edit/5
         public ActionResult Edit(int id)
