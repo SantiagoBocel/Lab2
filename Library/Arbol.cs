@@ -15,7 +15,6 @@ namespace Library
         {
             raiz = null;
         }
-
         public void Agregar(string identificador)
         {
 
@@ -46,8 +45,8 @@ namespace Library
         }
         public Nodo<T> eAgregar(Nodo<T> actual, Nodo<T> nuevo)
         {
-            int asdasd = nuevo.Nombre.CompareTo(actual.Nombre);
-            if (asdasd< 0)// delegdo  :3
+            int Comparar = nuevo.Nombre.CompareTo(actual.Nombre);
+            if (Comparar< 0)// delegdo  :3
             {
                 if (actual.hijoIzq == null)
                 {
@@ -62,7 +61,7 @@ namespace Library
                     return actual;
                 }
             }
-            else if (nuevo.Nombre.CompareTo(actual.Nombre) > 0)
+            else if (actual.Nombre.CompareTo(nuevo.Nombre) > 0)
             {
                 if (actual.hijoDer == null)
                 {
@@ -85,16 +84,17 @@ namespace Library
         }
         public string eBuscar(Nodo<T> actual, string recibido)
         {
-            if (recibido == actual.Nombre)
+            
+            if (actual != null && recibido == actual.Nombre )
             {
                 string lel = actual.Nombre;
                 return lel;
             }
-            else if (recibido.CompareTo(actual.Nombre) < 0)
+            else if (actual != null && recibido.CompareTo(actual.Nombre) < 0)
             {
                 return eBuscar(actual.hijoIzq, recibido);
             }
-            else if (recibido.CompareTo(actual.Nombre) > 0)
+            else if (actual != null && recibido.CompareTo(actual.Nombre) > 0)
             {
                 return eBuscar(actual.hijoDer, recibido);
             }
@@ -461,6 +461,9 @@ namespace Library
                 PreOrden(raiz.hijoDer);
             }
         }
-      
+        public void eliminar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

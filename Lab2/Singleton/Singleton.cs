@@ -19,14 +19,15 @@ namespace Lab2.Singleton
         }
        
         public Library.Arbol<int> Arbol = new Library.Arbol<int>();
-        public List<Farmaco> Lista = new List<Farmaco>();
+        public List<Farmaco> pos = new List<Farmaco>();
+        // cambiar a pila 
         public List<cVenta> lVentas = new List<cVenta>();
         public bool flag=true;
         public void CustomSplit()
         {
             if (Instance.flag)
             {
-                StreamReader objReader = new StreamReader("D:\\Estructurass\\Lab2\\Lab2\\Lab2\\obj\\Debug\\Datos.txt");
+                StreamReader objReader = new StreamReader("C:\\Users\\Usuario\\Documents\\Lab2\\Lab2\\obj\\Debug\\Datos1.txt");
                 string leerlineas = objReader.ReadLine();
               
                 
@@ -72,7 +73,7 @@ namespace Lab2.Singleton
                         objeto.Casa = datos[3];
                         objeto.Precio = datos[4];
                         objeto.Exis = int.Parse(datos[5]);
-                        Lista.Add(objeto);
+                        pos.Add(objeto);
                     Arbol.Agregar(objeto.Nombre);
                 }
                 Instance.flag = false;
@@ -83,9 +84,9 @@ namespace Lab2.Singleton
         {
             Farmaco resultado = new Farmaco();
             string encuentra = Arbol.Buscar(nombre);
-            if (Lista[pos].Nombre==encuentra)
+            if (this.pos[pos].Nombre== encuentra)
             {
-                resultado = Lista[pos];
+                resultado = this.pos[pos];
                 return resultado;
             }
                 pos++;
@@ -95,12 +96,12 @@ namespace Lab2.Singleton
         public void Venta(int pos, string nombre)
         {
             cVenta Elemento = new cVenta();
-            if (Lista[pos].Nombre == nombre)
+            if (this.pos[pos].Nombre == nombre)
             {
-               Elemento.Nombre= Lista[pos].Nombre;
-                Lista[pos].Exis--;
-               Elemento.Id = Lista[pos].Id;
-                string aux = Lista[pos].Precio.Remove(0,1);
+               Elemento.Nombre= this.pos[pos].Nombre;
+                this.pos[pos].Exis--;
+               Elemento.Id = this.pos[pos].Id;
+                string aux = this.pos[pos].Precio.Remove(0,1);
                 Elemento.Precio = double.Parse(aux);
                 lVentas.Add(Elemento);
                 return ;
@@ -109,15 +110,18 @@ namespace Lab2.Singleton
             Venta(pos, nombre);
         }
         public void Quitar(int pos, string nombre)
+            //// cambiar la poscicion  
         {
             cVenta Elemento = new cVenta();
-            if (Lista[pos].Nombre == nombre)
+            int indice = 0;
+            if (this.pos[pos].Nombre == nombre)
             {
-                lVentas.RemoveAt(pos);
-                Lista[pos].Exis++;
-
+                ////////////////////////////////
+                lVentas.RemoveAt(indice);                
+                this.pos[pos].Exis++;
                 return;
             }
+            indice++;
             pos++;
             Quitar(pos, nombre);
         }

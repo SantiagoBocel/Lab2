@@ -15,5 +15,6 @@ namespace Library
         void inOrden();
         void PreOrden(Nodo<T> raiz);
         void PosTOrden();
+        void eliminar();
     }
 }

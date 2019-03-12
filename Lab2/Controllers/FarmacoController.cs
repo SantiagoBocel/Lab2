@@ -16,7 +16,7 @@ namespace Lab2.Controllers
         {
             Data.Instance.CustomSplit();
 
-            return View(Data.Instance.Lista);
+            return View(Data.Instance.pos);
         }
 
         public ActionResult Avanzada(string nombre)
@@ -27,7 +27,7 @@ namespace Lab2.Controllers
         public ActionResult Ventas(string nombre)
         {
             Data.Instance.Venta(0,nombre);
-            return View(Data.Instance.Lista);
+            return View(Data.Instance.pos);
         }
 
         public ActionResult Quitar(string nombre)
