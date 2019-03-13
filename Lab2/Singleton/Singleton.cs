@@ -17,7 +17,7 @@ namespace Lab2.Singleton
                 return _instance;
             }
         }
-       
+       public string busqueda = "";
         public Library.Arbol<int> Arbol = new Library.Arbol<int>();
         public List<Farmaco> pos = new List<Farmaco>();
         // cambiar a pila 
@@ -27,7 +27,7 @@ namespace Lab2.Singleton
         {
             if (Instance.flag)
             {
-                StreamReader objReader = new StreamReader("C:\\Users\\Usuario\\Documents\\Lab2\\Lab2\\obj\\Debug\\Datos1.txt");
+                StreamReader objReader = new StreamReader("D:\\Estructurass\\Lab2\\Lab2\\Lab2\\obj\\Debug\\Datos.txt");
                 string leerlineas = objReader.ReadLine();
               
                 
@@ -84,6 +84,10 @@ namespace Lab2.Singleton
         {
             Farmaco resultado = new Farmaco();
             string encuentra = Arbol.Buscar(nombre);
+            if (encuentra=="" || encuentra == null)
+            {
+                encuentra = nombre;
+            }
             if (this.pos[pos].Nombre== encuentra)
             {
                 resultado = this.pos[pos];

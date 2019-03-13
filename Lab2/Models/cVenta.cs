@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lab2.Models
 {
-    public class cVenta
+    public class cVenta : IComparable
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

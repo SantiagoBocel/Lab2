@@ -178,6 +178,8 @@
     <Content Include="Views\Farmaco\Ventas.cshtml" />
     <Content Include="Views\Farmaco\Carrito.cshtml" />
     <Content Include="Views\Farmaco\Quitar.cshtml" />
+    <Content Include="Views\Farmaco\Create.cshtml" />
+    <Content Include="Views\Farmaco\Avanzada1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
