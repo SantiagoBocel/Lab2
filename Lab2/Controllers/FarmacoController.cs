@@ -11,8 +11,14 @@ namespace Lab2.Controllers
 {
     public class FarmacoController : Controller
     {
+        public ActionResult Basica(string nombre)
+        {
+            return View(Data.Instance.Buscar(0, nombre));
+        }
         public ActionResult Index()
         {
+            Data.Instance.lVentas.Clear();
+
             Data.Instance.CustomSplit();
 
             return View(Data.Instance.pos);
@@ -20,6 +26,10 @@ namespace Lab2.Controllers
         public ActionResult Avanzada(string nombre)
         {
             return View(Data.Instance.Buscar(0, nombre));
+        }
+        public ActionResult Avanzada1()
+        {
+            return View(Data.Instance.Buscar(0, Data.Instance.busqueda));
         }
         public ActionResult Ventas(string nombre)
         {
@@ -34,11 +44,6 @@ namespace Lab2.Controllers
         public ActionResult Carrito()
         {
             return View(Data.Instance.lVentas);
-        }
-
-        public ActionResult Avanzada1()
-        {
-            return View(Data.Instance.Buscar(0, Data.Instance.busqueda));
         }
         public ActionResult Create()
         {
@@ -64,15 +69,51 @@ namespace Lab2.Controllers
                 return RedirectToAction("Avanzada1");
 
             }
-            catch { return View(); }
+            catch { return View("Index"); }
         }
-
-
-
-        public ActionResult Basica(string nombre)
+        public ActionResult Factura()
         {
-            return View(Data.Instance.Buscar(0, nombre));
+            return View(Data.Instance.Factura);
         }
+        public ActionResult Usuario()
+        {
+            return View();
+        }
+
+       
+
+        [HttpPost]
+        public ActionResult Usuario(FormCollection collection)
+        {
+
+            try
+            {
+                //Asignaciones
+                var nuevo = new Factura();
+
+                nuevo.Nombre = collection["Nombre"];
+
+                nuevo.NIT = collection["NIT"];
+
+                nuevo.Direccion = collection["Direccion"];
+
+                nuevo.Pagar = Data.Instance.Pagar();
+
+
+                Data.Instance.Factura.Add(nuevo);
+                // Pushs//aqui decidimos a que lista queremos agregar
+
+                return RedirectToAction("Factura");
+
+            }
+            catch { return View("Index"); }
+        }
+        
+        public ActionResult Entregar(int id)
+        {
+            return View("Index");
+        }
+
 
     }
 }

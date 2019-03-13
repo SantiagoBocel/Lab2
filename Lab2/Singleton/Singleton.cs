@@ -17,12 +17,24 @@ namespace Lab2.Singleton
                 return _instance;
             }
         }
-       public string busqueda = "";
+        int poslista=0; 
+        public string busqueda = "";
         public Library.Arbol<int> Arbol = new Library.Arbol<int>();
+        public List<Factura> Factura = new List<Factura>();
         public List<Farmaco> pos = new List<Farmaco>();
-        // cambiar a pila 
         public List<cVenta> lVentas = new List<cVenta>();
         public bool flag=true;
+
+        public double Pagar()
+        {
+            double totalapagar = 0;
+
+            for (int i = 0; i < lVentas.Count; i++)
+            {
+                totalapagar = totalapagar +lVentas[i].Precio;
+            }
+            return totalapagar;
+        }
         public void CustomSplit()
         {
             if (Instance.flag)

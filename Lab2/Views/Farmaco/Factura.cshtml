@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Lab2.Models.Factura>
+
+@{
+    ViewBag.Title = "Factura";
+}
+
+<h2>Factura</h2>
+<div>
+    @Html.ActionLink("Regresar A Lista", "Index");
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pagar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.NIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pagar)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

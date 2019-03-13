@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\cVenta.cs" />
+    <Compile Include="Models\Factura.cs" />
     <Compile Include="Models\Farmaco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\Singleton.cs" />
@@ -172,14 +173,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Farmaco\Index.cshtml" />
-    <Content Include="Views\Farmaco\Avanzada.cshtml" />
-    <Content Include="Views\Farmaco\Basica.cshtml" />
     <Content Include="Views\Farmaco\Ventas.cshtml" />
     <Content Include="Views\Farmaco\Carrito.cshtml" />
     <Content Include="Views\Farmaco\Quitar.cshtml" />
     <Content Include="Views\Farmaco\Create.cshtml" />
     <Content Include="Views\Farmaco\Avanzada1.cshtml" />
+    <Content Include="Views\Farmaco\Usuario.cshtml" />
+    <Content Include="Views\Farmaco\Index.cshtml" />
+    <Content Include="Views\Farmaco\Avanzada.cshtml" />
+    <Content Include="Views\Farmaco\Basica.cshtml" />
+    <Content Include="Views\Farmaco\Factura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
